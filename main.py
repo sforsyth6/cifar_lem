@@ -165,10 +165,10 @@ def main():
 #    normalize = transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
 #    transform = transforms.Compose([transforms.ToTensor(), normalize])
 
-    train_dataset = datasets.CIFAR10Instance(root='/data/cifar/', train=True, download=True, transform=transform_train)
+    train_dataset = datasets.CIFAR10Instance(root=args.data, train=True, download=True, transform=transform_train)
     train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=250, shuffle=True, num_workers=4, pin_memory=True)
 
-    val_dataset = datasets.CIFAR10Instance(root='/data/cifar/', train=False, download=True, transform=transform_test)
+    val_dataset = datasets.CIFAR10Instance(root=args.data, train=False, download=True, transform=transform_test)
     val_loader = torch.utils.data.DataLoader(val_dataset, batch_size=250, shuffle=False, num_workers=4, pin_memory=True)
 
     classes = ('plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
